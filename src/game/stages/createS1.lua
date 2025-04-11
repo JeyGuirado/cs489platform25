@@ -6,7 +6,7 @@ local Sounds = require "src.game.Sounds"
 
 local function createS1()
     local stage = Stage(20,50,BasicTileset)
-    local mapdata = require "src.game.maps.map1"
+    local mapdata = require "src.game.maps.map2"
     stage:readMapData(mapdata)
 
     local objdata = require "src.game.maps.map1objects"

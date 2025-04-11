@@ -23,7 +23,7 @@ local function createS2()
 
     -- Initial Player Pos
     stage.initialPlayerX = 1*16
-    stage.initialPlayerY = 13*16 
+    stage.initialPlayerY = 12*16 
 
     -- Adding mobs
     local mob1 = Boar()
