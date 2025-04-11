@@ -9,7 +9,7 @@ local function createS2()
     local mapdata = require "src.game.maps.map2"
     stage:readMapData(mapdata)
 
-    local objdata = require "src.game.maps.map1objects"
+    local objdata = require "src.game.maps.map2objects"
     stage:readObjectsData(objdata)
 
     -- Backgrounds
@@ -37,4 +37,4 @@ local function createS2()
     return stage
 end
 
-return createS1
+return createS2

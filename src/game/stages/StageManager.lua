@@ -37,6 +37,7 @@ function StageManager:setStage(index)
     end
 
     self.index = index
+    print(self.index)
     self.current = self.createStage[self.index]() -- calls createS()
     -- self.current now has an instance of the stage
 

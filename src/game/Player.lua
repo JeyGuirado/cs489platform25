@@ -3,6 +3,8 @@ local Anim8 = require "libs.anim8"
 local Tween = require "libs.tween"
 local Hbox = require "src.game.Hbox"
 local Sounds = require "src.game.Sounds"
+local stagemanager = require "src.game.stages.StageManager"
+--local stagemanagerinstance = require "src.game.stages.stagemanagerinstance"
 
 local idleSprite = love.graphics.newImage(
     "graphics/char/Idle-Sheet.png")
@@ -40,12 +42,14 @@ local dieGrid = Anim8.newGrid(80, 80, dieSprite:getWidth(), dieSprite:getHeight(
 local dieAnim = Anim8.newAnimation(dieGrid('1-8',1),0.1)
 
 local Player = Class{}
-function Player:init(x,y)
+function Player:init(x,y, stagemanager)
     self.x = x
     self.y = y
     self.name = "char"
     self.hitboxes = {}
     self.hurtboxes = {}
+
+    self.stagemanager = stagemanager
 
     self.state = "idle"
     self.dir = "r" -- r for right, l for left
@@ -153,6 +157,15 @@ function Player:update(dt, stage)
             self.state = "idle"
             self.speedY = 1
         end
+    end
+
+    if self.gems == 3 then
+        self.state = "idle"
+        self.gems = 0
+        self.score = self.score + 100
+        self.stagemanager:nextStage()
+        self.hp = 100
+
     end
 
     -- collisions logic

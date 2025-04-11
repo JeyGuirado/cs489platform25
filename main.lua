@@ -4,6 +4,7 @@ local Sounds = require "src.game.Sounds"
 local Player = require "src.game.Player"
 local Camera = require "libs.sxcamera"
 local HUD = require "src.game.HUDimproved"
+local manager = require "src.game.stages.stagemanagerinstance"
 
 -- Load is executed only once; used to setup initial resource for your game
 function love.load()
@@ -11,7 +12,7 @@ function love.load()
     Push:setupScreen(gameWidth, gameHeight, windowWidth, windowHeight, {fullscreen = false, resizable = true})
     math.randomseed(os.time()) -- RNG setup for later
 
-    player = Player(0,0)
+    player = Player(0,0, manager)
     hud = HUD(player)
 
     camera = Camera(gameWidth/2,gameHeight/2,
