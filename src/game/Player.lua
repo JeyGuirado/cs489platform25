@@ -159,7 +159,7 @@ function Player:update(dt, stage)
         end
     end
 
-    if self.gems == 3 then
+    if self.gems == 1 then
         self.state = "idle"
         self.gems = 0
         self.score = self.score + 100

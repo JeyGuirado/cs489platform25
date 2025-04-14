@@ -30,6 +30,9 @@ local function createS2()
     mob1:setCoord(25*16, 12*16)
     mob1:changeDirection()
     stage:addMob(mob1)
+    local mob2 = Boar()
+    mob2:setCoord(10*16, 12*16)
+    stage:addMob(mob2)
 
     -- music
     stage:setMusic(Sounds["music_edm"])
