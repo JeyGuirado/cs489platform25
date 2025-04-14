@@ -5,6 +5,7 @@ local Player = require "src.game.Player"
 local Camera = require "libs.sxcamera"
 local HUD = require "src.game.HUDimproved"
 local manager = require "src.game.stages.stagemanagerinstance"
+local time = 0
 
 -- Load is executed only once; used to setup initial resource for your game
 function love.load()
@@ -74,6 +75,12 @@ function love.update(dt)
         camera:update(dt)
         camera:follow(
             math.floor(player.x+48), math.floor(player.y))
+    elseif gameState == "next" then
+        time = time + dt
+        if time > 2 then
+            gameState = "play"
+            time = 0
+        end
 
     elseif gameState == "start" then
 
@@ -93,12 +100,22 @@ function love.draw()
         drawStartState()
     elseif gameState == "over" then
         drawGameOverState()
+    elseif gameState == "next" then
+        drawNextState()
     else --Error, should not happen
         love.graphics.setColor(1,1,0) -- Yellow
         love.graphics.printf("Error", 0,20,gameWidth,"center")
     end
 
     Push:finish()
+end
+
+function drawNextState()
+    love.graphics.setColor(0.3,0.3,0.3) -- dark gray
+    stagemanager:currentStage():drawBg()
+    stagemanager:currentStage():draw() -- draw Stage zero
+    love.graphics.setColor(1,1,0) -- Yellow
+    love.graphics.printf("Next Stage", titleFont,0,20,gameWidth,"center") -- Title    love.graphics.printf("Press Enter to Play", 0,140,gameWidth,"center")
 end
 
 function drawPlayState()

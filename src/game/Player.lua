@@ -165,6 +165,7 @@ function Player:update(dt, stage)
         self.score = self.score + 100
         self.stagemanager:nextStage()
         self.hp = 100
+        gameState = "next"
 
     end
 

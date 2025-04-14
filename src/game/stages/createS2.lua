@@ -27,7 +27,7 @@ local function createS2()
 
     -- Adding mobs
     local mob1 = Boar()
-    mob1:setCoord(25*16, 12*16)
+    mob1:setCoord(14*16, 2*16)
     mob1:changeDirection()
     stage:addMob(mob1)
     local mob2 = Boar()
