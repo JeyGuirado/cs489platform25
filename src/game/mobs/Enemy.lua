@@ -106,9 +106,9 @@ function Enemy:showDamage(damage)
         self.y + self:getDimensions()/2)
     table.insert(self.damageNumbers,num)
 
-    Timer.tween(0.8, dmg, { y = dmg.y - 20, alpha = 0 }, 'linear', function()
+    Timer.tween(0.8, num, { y = num.y - 20, alpha = 0 }, 'linear', function()
         for i, v in ipairs(self.damageNumbers) do
-            if v == dmg then
+            if v == num then
                 table.remove(self.damageNumbers, i)
                 break
             end
