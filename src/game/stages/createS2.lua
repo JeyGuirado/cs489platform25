@@ -32,7 +32,7 @@ local function createS2()
     stage:addMob(mob1)
 
     -- music
-    stage:setMusic(Sounds["music_adventure"])
+    stage:setMusic(Sounds["music_edm"])
 
     return stage
 end
